@@ -11,9 +11,9 @@
 use [master];
 GO
 
-CREATE PROCEDURE dbo.FXExportIndexes (
-	@dbname nvarchar(max),
-	@Return table output
+CREATE PROCEDURE dbo.SP_FXExportIndexes (
+	@dbname nvarchar(max)
+	--@Return table output
 	)
 AS
 BEGIN
@@ -69,14 +69,14 @@ select * from @Indexes;'
 END
 GO
 
-Exec sp_MS_marksystemobject 'FXExportIndexes'
+Exec sp_MS_marksystemobject 'SP_FXExportIndexes'
 GO
 
 SELECT NAME, IS_MS_SHIPPED 
 FROM SYS.OBJECTS 
-WHERE NAME = 'FXExportIndexes' 
+WHERE NAME = 'SP_FXExportIndexes' 
 GO 
 
 
 
-exec FXExportIndexes 'saleslogix84_eval'
+--exec FXExportIndexes 'saleslogix84_eval'
